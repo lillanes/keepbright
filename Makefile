@@ -1,9 +1,9 @@
 install:
-	mkdir -p ${PREFIX}/etc/sv/keepbright
-	cp run ${PREFIX}/etc/sv/keepbright/
-	cp finish ${PREFIX}/etc/sv/keepbright/
+	mkdir -p ${DESTDIR}${PREFIX}/etc/sv/keepbright
+	cp run ${DESTDIR}${PREFIX}/etc/sv/keepbright/
+	cp finish ${DESTDIR}${PREFIX}/etc/sv/keepbright/
 
 uninstall:
-	rm ${PREFIX}/etc/sv/keepbright/run
-	rm ${PREFIX}/etc/sv/keepbright/finish
-	rmdir ${PREFIX}/etc/sv/keepbright
+	rm ${DESTDIR}${PREFIX}/etc/sv/keepbright/run
+	rm ${DESTDIR}${PREFIX}/etc/sv/keepbright/finish
+	rmdir ${DESTDIR}${PREFIX}/etc/sv/keepbright
