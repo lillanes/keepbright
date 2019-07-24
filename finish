@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
+xbacklight -get > "$KEEPBRIGHT"
