@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
+mkdir -p $(dirname "$KEEPBRIGHT")
 
 cat /dev/null > "$KEEPBRIGHT"
 for dev in /sys/class/backlight/*; do
