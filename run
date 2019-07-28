@@ -1,4 +1,12 @@
 #!/bin/sh
 set -e
 KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
-[ -f "$KEEPBRIGHT" ] && xbacklight -set $(cat "$KEEPBRIGHT")
+
+if [ -f "$KEEBPRIGHT"]; then
+    while IFS='' read -r line; do
+        IFS=' ' read -r dev brightness <<-_EOF_
+        $line
+_EOF_
+        echo $brightness > "$dev"/brightness
+    done < "$KEEPBRIGHT"
+fi

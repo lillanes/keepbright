@@ -1,4 +1,8 @@
 #!/bin/sh
 set -e
 KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
-xbacklight -get > "$KEEPBRIGHT"
+
+cat /dev/null > "$KEEPBRIGHT"
+for dev in /sys/class/backlight/*; do
+    echo "$dev" $(cat "$dev"/brightness) >> "$KEEPBRIGHT"
+done
