@@ -14,5 +14,5 @@ make install
 
 Set up a runit service:
 ```
-ln -s /etc/sv/keepbright /var/service/
+ln -sv /etc/sv/keepbright /var/service/
 ```

@@ -1,9 +1,7 @@
 #!/bin/sh
-set -e
-KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
-mkdir -p $(dirname "$KEEPBRIGHT")
+KEEPBRIGHT_DIR=${KEEPBRIGHT_DIR:-/var/lib/keepbright}
+mkdir -p "$KEEPBRIGHT_DIR"
 
-cat /dev/null > "$KEEPBRIGHT"
-for dev in /sys/class/backlight/*; do
-    echo "$dev" $(cat "$dev"/brightness) >> "$KEEPBRIGHT"
+for device in /sys/class/backlight/*; do
+    cp "$device/brightness" "$KEEPBRIGHT_DIR/$(basename $device)"
 done

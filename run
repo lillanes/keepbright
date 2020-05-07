@@ -1,12 +1,9 @@
 #!/bin/sh
-set -e
-KEEPBRIGHT=${KEEPBRIGHT:-/var/lib/keepbright/brightness}
 
-if [ -f "$KEEBPRIGHT"]; then
-    while IFS='' read -r line; do
-        IFS=' ' read -r dev brightness <<-_EOF_
-        $line
-_EOF_
-        echo $brightness > "$dev"/brightness
-    done < "$KEEPBRIGHT"
-fi
+KEEPBRIGHT_DIR=${KEEPBRIGHT_DIR:-/var/lib/keepbright}
+
+for brightness in $KEEPBRIGHT_DIR/*; do
+    [ -f $brightness ] && cp "$brightness" "/sys/class/backlight/$(basename $brightness)/brightness"
+done
+
+exec chpst -b keepbright pause
