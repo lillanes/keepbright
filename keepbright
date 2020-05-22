@@ -17,7 +17,7 @@ case $1 in
     *)
         printf "usage: $0 <command>\n\n"
         printf "Where command is one of:\n\n"
-        printf "   stor   \tStore current brightness values\n"
+        printf "   store  \tStore current brightness values\n"
         printf "   restore\tRestore to last saved values\n"
     ;;
 esac
