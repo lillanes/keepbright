@@ -1,0 +1,3 @@
+# Set brightness to stored values after plug or unplug
+SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="keepbright restore"
+SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="keepbright restore"
