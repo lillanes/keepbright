@@ -1,0 +1,25 @@
+#!/bin/sh
+
+KEEPBRIGHT_DIR=${KEEPBRIGHT_DIR:-/var/lib/keepbright}
+
+case $1 in
+    store)
+        mkdir -p "$KEEPBRIGHT_DIR"
+        for device in /sys/class/backlight/*; do
+            cp "$device/brightness" "$KEEPBRIGHT_DIR/$(basename $device)"
+        done
+    ;;
+    restore)
+        for brightness in $KEEPBRIGHT_DIR/*; do
+            [ -f $brightness ] && cp "$brightness" "/sys/class/backlight/$(basename $brightness)/brightness"
+        done
+    ;;
+    *)
+        printf "usage: $0 <command>\n\n"
+        printf "Where command is one of:\n\n"
+        printf "   stor   \tStore current brightness values\n"
+        printf "   restore\tRestore to last saved values\n"
+    ;;
+esac
+
+mkdir -p "$KEEPBRIGHT_DIR"

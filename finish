@@ -1,7 +1,3 @@
 #!/bin/sh
-KEEPBRIGHT_DIR=${KEEPBRIGHT_DIR:-/var/lib/keepbright}
-mkdir -p "$KEEPBRIGHT_DIR"
 
-for device in /sys/class/backlight/*; do
-    cp "$device/brightness" "$KEEPBRIGHT_DIR/$(basename $device)"
-done
+keepbright store

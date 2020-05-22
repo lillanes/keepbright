@@ -1,9 +1,5 @@
 #!/bin/sh
 
-KEEPBRIGHT_DIR=${KEEPBRIGHT_DIR:-/var/lib/keepbright}
-
-for brightness in $KEEPBRIGHT_DIR/*; do
-    [ -f $brightness ] && cp "$brightness" "/sys/class/backlight/$(basename $brightness)/brightness"
-done
+keepbright restore
 
 exec chpst -b keepbright pause
