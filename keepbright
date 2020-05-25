@@ -14,10 +14,16 @@ case $1 in
             [ -f $brightness ] && cp "$brightness" "/sys/class/backlight/$(basename $brightness)/brightness"
         done
     ;;
+    clear)
+        for brightness in $KEEPBRIGHT_DIR/*; do
+            [ -f $brightness ] && rm "$brightness"
+        done
+    ;;
     *)
         printf "usage: $0 <command>\n\n"
         printf "Where command is one of:\n\n"
         printf "   store  \tStore current brightness values\n"
         printf "   restore\tRestore to last saved values\n"
+        printf "   clear  \tClear all saved values\n"
     ;;
 esac
