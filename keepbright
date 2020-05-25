@@ -20,7 +20,7 @@ case $1 in
         done
     ;;
     *)
-        printf "usage: $0 <command>\n\n"
+        printf "usage: keepbright <command>\n\n"
         printf "Where command is one of:\n\n"
         printf "   store  \tStore current brightness values\n"
         printf "   restore\tRestore to last saved values\n"
